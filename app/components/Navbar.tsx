@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const navLinks = [
-  { label: "Collections", href: "#" },
-  { label: "Oud & Musk", href: "#" },
-  { label: "Florals", href: "#" },
+  { label: "Collections", href: "/products" },
+  { label: "Oud & Musk", href: "/products" },
+  { label: "Florals", href: "/products" },
   { label: "Our Story", href: "#" },
 ];
 
@@ -20,8 +20,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const prevent = (e: React.MouseEvent) => e.preventDefault();
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -34,7 +32,7 @@ export default function Navbar() {
         {/* Left nav — desktop only */}
         <nav className="hidden items-center gap-6 lg:flex xl:gap-8">
           {navLinks.slice(0, 2).map((link) => (
-            <Link key={link.label} href={link.href} onClick={prevent}
+            <Link key={link.label} href={link.href}
               className="group relative text-[11px] tracking-[0.2em] uppercase text-[#c4aa8a]/60 transition-colors hover:text-[#b8944e]">
               {link.label}
               <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#b8944e] transition-all duration-300 group-hover:w-full" />
@@ -43,7 +41,7 @@ export default function Navbar() {
         </nav>
 
         {/* Brand name — centered on all screens */}
-        <Link href="/" onClick={prevent}
+        <Link href="/"
           className="absolute left-1/2 -translate-x-1/2">
           <div className="flex flex-col items-center leading-none">
             <span className="font-serif text-lg tracking-[0.1em] text-[#f5ede0] sm:text-xl lg:text-2xl">
@@ -60,7 +58,7 @@ export default function Navbar() {
           {/* Right nav — desktop only */}
           <nav className="hidden items-center gap-6 lg:flex xl:gap-8">
             {navLinks.slice(2).map((link) => (
-              <Link key={link.label} href={link.href} onClick={prevent}
+              <Link key={link.label} href={link.href}
                 className="group relative text-[11px] tracking-[0.2em] uppercase text-[#c4aa8a]/60 transition-colors hover:text-[#b8944e]">
                 {link.label}
                 <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#b8944e] transition-all duration-300 group-hover:w-full" />
@@ -110,7 +108,7 @@ export default function Navbar() {
       <div className={`overflow-hidden transition-all duration-300 lg:hidden ${menuOpen ? "max-h-72 opacity-100" : "max-h-0 opacity-0"}`}>
         <nav className="flex flex-col border-t border-[#b8944e]/10 bg-[#0a0804] px-5 py-2 sm:px-8">
           {navLinks.map((link) => (
-            <Link key={link.label} href={link.href} onClick={prevent}
+            <Link key={link.label} href={link.href}
               className="border-b border-[#b8944e]/10 py-3.5 text-[11px] tracking-[0.3em] uppercase text-[#c4aa8a]/55 transition-colors hover:text-[#b8944e] last:border-0">
               {link.label}
             </Link>
